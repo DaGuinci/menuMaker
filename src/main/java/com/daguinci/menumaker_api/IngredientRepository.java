@@ -8,5 +8,5 @@ import com.daguinci.menumaker_api.Ingredient;;
 // CRUD refers Create, Read, Update, Delete
 
 public interface IngredientRepository extends CrudRepository<Ingredient, Integer> {
-
+    boolean existsByName(String name);
 }

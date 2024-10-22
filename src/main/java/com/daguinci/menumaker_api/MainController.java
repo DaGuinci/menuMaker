@@ -1,6 +1,8 @@
 package com.daguinci.menumaker_api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,23 +18,25 @@ public class MainController {
     private IngredientRepository ingredientRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewIngredient (
+    public ResponseEntity<String> addIngredient(
         @RequestParam String name,
         @RequestParam String type,
         @RequestParam Boolean seasonal,
-        @RequestParam Integer[] seasons
-        ) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
+        @RequestParam Integer[] seasons) {
 
-        Ingredient n = new Ingredient();
-        n.setName(name);
-        n.setType(type);
-        n.setSeasonal(seasonal);
-        n.setSeasons(seasons);
-        ingredientRepository.save(n);
-        return "Saved";
+    if (ingredientRepository.existsByName(name)) {
+        return new ResponseEntity<>("Ingredient already exists", HttpStatus.CONFLICT);
     }
+
+    Ingredient n = new Ingredient();
+    n.setName(name);
+    n.setType(type);
+    n.setSeasonal(seasonal);
+    n.setSeasons(seasons);
+    ingredientRepository.save(n);
+
+    return new ResponseEntity<>("Ingredient created successfully", HttpStatus.CREATED);
+}
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Ingredient> getAllIngredients() {
