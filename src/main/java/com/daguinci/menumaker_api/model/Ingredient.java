@@ -1,4 +1,4 @@
-package com.daguinci.menumaker_api;
+package com.daguinci.menumaker_api.model;
 
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;

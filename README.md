@@ -15,5 +15,19 @@ DB_PASSWORD=password
 ## Launch
 
 ```bash
-mvn spring boot:run
+mvn spring-boot:run
 ```
+
+## Use
+
+Get ingredients:
+
+```
+http://localhost:8080/ingredients/all
+```
+
+Add ingredient:
+
+## Doc
+
+http://localhost:8080/swagger-ui/index.html
