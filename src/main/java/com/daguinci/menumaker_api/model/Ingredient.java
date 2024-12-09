@@ -61,6 +61,7 @@ public class Ingredient {
     }
 
     public void setSeasons(Integer[] seasons) {
+        // logger.debug("The value of yourVariable is: {}", seasons);
         this.seasons = seasons;
     }
 }
