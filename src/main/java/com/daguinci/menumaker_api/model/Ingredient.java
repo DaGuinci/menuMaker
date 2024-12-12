@@ -1,9 +1,13 @@
-package com.daguinci.menumaker_api;
+package com.daguinci.menumaker_api.model;
 
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import com.daguinci.menumaker_api.converter.IntegerArrayConverter;
+
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Ingredient {
@@ -17,6 +21,7 @@ public class Ingredient {
 
     private Boolean seasonal;
 
+    @Convert(converter = IntegerArrayConverter.class)
     private Integer[] seasons;
 
     public Integer getId() {
@@ -56,6 +61,7 @@ public class Ingredient {
     }
 
     public void setSeasons(Integer[] seasons) {
+        // logger.debug("The value of yourVariable is: {}", seasons);
         this.seasons = seasons;
     }
 }
