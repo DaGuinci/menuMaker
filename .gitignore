@@ -32,3 +32,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Exclure les fichiers et répertoires liés aux environnements virtuels
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.pyc
+__pycache__/
