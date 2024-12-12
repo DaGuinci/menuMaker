@@ -1,19 +1,27 @@
-import os
-import sys
-sys.path.insert(0, os.path.abspath('..'))
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-project = 'Your Project Name'
-author = 'Your Name'
-release = '0.1'
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'myst_parser',  # Si vous utilisez Markdown
-]
+project = 'ManuMaker'
+copyright = '2024, Guillaume Even'
+author = 'Guillaume Even'
+
+# -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+extensions = []
 
 templates_path = ['_templates']
-exclude_patterns = []
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+
+
+
+# -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
