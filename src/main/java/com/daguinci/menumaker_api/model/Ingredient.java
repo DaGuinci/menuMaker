@@ -64,4 +64,16 @@ public class Ingredient {
         // logger.debug("The value of yourVariable is: {}", seasons);
         this.seasons = seasons;
     }
+
+    public Ingredient(
+        String name,
+        String type,
+        Boolean seasonal,
+        Integer[] seasons
+    ) {
+        this.name = name;
+        this.type = type;
+        this.seasonal = seasonal;
+        this.seasons = seasons;
+    }
 }

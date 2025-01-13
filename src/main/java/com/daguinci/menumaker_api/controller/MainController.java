@@ -40,13 +40,9 @@ public class MainController {
         return new ResponseEntity<>("Ingredient already exists", HttpStatus.CONFLICT);
     }
 
-    Ingredient n = new Ingredient();
-    n.setName(name);
-    n.setType(type);
-    n.setSeasonal(seasonal);
-    n.setSeasons(seasons);
+    Ingredient n = new Ingredient(name, type, seasonal, seasons);
     ingredientRepository.save(n);
-
+    
     return new ResponseEntity<>("Ingredient created successfully", HttpStatus.CREATED);
 }
 
