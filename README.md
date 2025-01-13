@@ -42,3 +42,5 @@ type vegetable
 seasonal true/false
 seasons 7,3
 ```
+
+https://menumaker.readthedocs.io/fr/latest/setup.html
