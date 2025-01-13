@@ -36,15 +36,15 @@ public class MainController {
         @RequestParam Boolean seasonal,
         @RequestParam Integer[] seasons) {
 
-    if (ingredientRepository.existsByName(name)) {
-        return new ResponseEntity<>("Ingredient already exists", HttpStatus.CONFLICT);
-    }
+        if (ingredientRepository.existsByName(name)) {
+            throw new IllegalStateException("Ingredient exists");
+        }
 
-    Ingredient n = new Ingredient(name, type, seasonal, seasons);
-    ingredientRepository.save(n);
-    
-    return new ResponseEntity<>("Ingredient created successfully", HttpStatus.CREATED);
-}
+        Ingredient n = new Ingredient(name, type, seasonal, seasons);
+        ingredientRepository.save(n);
+        
+        return new ResponseEntity<>("Ingredient created successfully", HttpStatus.CREATED);
+    }
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Ingredient> getAllIngredients() {
