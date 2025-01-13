@@ -35,8 +35,23 @@
             
   <section id="setup">
 <h1>Setup<a class="headerlink" href="#setup" title="Link to this heading">¶</a></h1>
-<p>Need to have a Mysql server running, an existent database and .env file as :</p>
-<p>DB name: menumaker_dev</p>
+<ol class="arabic simple">
+<li><p>Clone the repository</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/DaGuinci/menuMaker.git
+</pre></div>
+</div>
+<p>Need to have a Mysql server running, an existent database named menumaker_dev and a .env file as :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DB_USER</span><span class="o">=</span><span class="n">root</span>
+<span class="n">DB_PASSWORD</span><span class="o">=</span><span class="n">root</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Run the server</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mvn<span class="w"> </span>spring-boot:run
+</pre></div>
+</div>
 </section>
 
 
