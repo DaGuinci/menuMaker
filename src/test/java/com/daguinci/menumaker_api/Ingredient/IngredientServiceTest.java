@@ -1,6 +1,10 @@
 package com.daguinci.menumaker_api.Ingredient;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.daguinci.menumaker_api.Ingredient.exception.BadRequestException;
 
 @ExtendWith(MockitoExtension.class)
 public class IngredientServiceTest {
@@ -23,7 +29,6 @@ public class IngredientServiceTest {
     }
 
     @Test
-    @Disabled
     void canAddAnIngredient() {
         // repository is already tested, so we can mock it
         // the save method is already tested in the repository test
@@ -47,6 +52,29 @@ public class IngredientServiceTest {
 
         Ingredient capturedIngredient = ingredientArgumentCaptor.getValue();
         assertThat(capturedIngredient).isEqualTo(ingredient);
+    }
+
+    @Test
+    void willThrowWhenNameTaken() {
+        
+        // given
+        Ingredient ingredient = new Ingredient(
+            "Cucumber",
+            "Vegetable",
+            true,
+            new Integer[] { 1, 2, 3 }
+        );
+
+        given(ingredientRepository.existsByName(ingredient.getName()))
+        .willReturn(true);
+
+        // when
+        // then
+        assertThatThrownBy(() -> underTest.addIngredient(ingredient))
+            .isInstanceOf(BadRequestException.class)
+            .hasMessageContaining("Name " + ingredient.getName() + " taken");
+
+        verify(ingredientRepository, never()).save(any());
     }
 
     @Test
