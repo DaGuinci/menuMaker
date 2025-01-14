@@ -29,17 +29,28 @@ public class IngredientControllerTest {
         
 
         // when
-        underTest.addIngredient(
+        Ingredient ingredient = new Ingredient(
             "Cucumber",
             "Vegetable",
             true,
             new Integer[] { 1, 2, 3 }
         );
+        underTest.addIngredient(ingredient);
+        // underTest.addIngredient(
+        //     "Cucumber",
+        //     "Vegetable",
+        //     true,
+        //     new Integer[] { 1, 2, 3 }
+        // );
 
         // then
         ArgumentCaptor<Ingredient> ingredientArgumentCaptor =
             ArgumentCaptor.forClass(Ingredient.class);
+        
+        verify(ingredientRepository).save(ingredientArgumentCaptor.capture());
 
+        // Ingredient capturedIngredient = ingredientArgumentCaptor.getValue();
+        // assertThat(capturedIngredient).isEqualTo(ingredient);
     }
 
     @Test

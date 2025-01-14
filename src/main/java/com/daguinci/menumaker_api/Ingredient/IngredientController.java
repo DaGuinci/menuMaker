@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,17 +31,12 @@ public class IngredientController {
         @ApiResponse(responseCode = "409", description = "Ingredient already exists")
     })
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public ResponseEntity<String> addIngredient(
-        @RequestParam String name,
-        @RequestParam String type,
-        @RequestParam Boolean seasonal,
-        @RequestParam Integer[] seasons) {
-
-        if (ingredientRepository.existsByName(name)) {
+    public ResponseEntity<String> addIngredient(Ingredient ingredient) {
+    
+        if (ingredientRepository.existsByName(ingredient.getName())) {
             throw new IllegalStateException("Ingredient exists");
         }
-
-        Ingredient ingredient = new Ingredient(name, type, seasonal, seasons);
+    
         ingredientRepository.save(ingredient);
         
         return new ResponseEntity<>("Ingredient created successfully", HttpStatus.CREATED);
