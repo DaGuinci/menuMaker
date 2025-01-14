@@ -1,4 +1,4 @@
-package com.daguinci.menumaker_api.controller;
+package com.daguinci.menumaker_api.Ingredient;
 
 import static org.mockito.Mockito.verify;
 
@@ -8,10 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import com.daguinci.menumaker_api.Ingredient.Ingredient;
-import com.daguinci.menumaker_api.Ingredient.IngredientController;
-import com.daguinci.menumaker_api.Ingredient.IngredientRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class IngredientControllerTest {
