@@ -2,6 +2,7 @@ package com.daguinci.menumaker_api.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,8 +15,13 @@ public class IngredientRepositoryTest {
     @Autowired
     private IngredientRepository underTest;
 
+    @AfterEach
+    void tearDown() {
+        underTest.deleteAll();
+    }
+
     @Test
-    void itShouldCheckIfIngredientExistsByName() {
+    void itShouldCheckIfIngredientNameExists() {
         // given
         String name = "Cucumber";
         Ingredient ingredient = new Ingredient(
@@ -31,5 +37,17 @@ public class IngredientRepositoryTest {
 
         // then
         assertThat(expected).isTrue();
+    }
+
+    @Test
+    void itShouldCheckIfIngredientNameDoesNotExist() {
+        // given
+        String name = "Cucumber";
+
+        // when
+        boolean expected = underTest.existsByName(name);
+
+        // then
+        assertThat(expected).isFalse();
     }
 }
