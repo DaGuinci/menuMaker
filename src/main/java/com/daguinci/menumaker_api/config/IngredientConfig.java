@@ -1,11 +1,13 @@
 package com.daguinci.menumaker_api.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
-import com.daguinci.menumaker_api.repository.IngredientRepository;
 import java.util.List;
-import com.daguinci.menumaker_api.model.Ingredient;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.daguinci.menumaker_api.Ingredient.Ingredient;
+import com.daguinci.menumaker_api.Ingredient.IngredientRepository;
 
 @Configuration
 public class IngredientConfig {

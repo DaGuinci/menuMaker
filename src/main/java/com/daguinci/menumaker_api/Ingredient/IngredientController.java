@@ -1,4 +1,4 @@
-package com.daguinci.menumaker_api.controller;
+package com.daguinci.menumaker_api.Ingredient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.daguinci.menumaker_api.model.Ingredient;
-import com.daguinci.menumaker_api.repository.IngredientRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -45,8 +42,8 @@ public class IngredientController {
             throw new IllegalStateException("Ingredient exists");
         }
 
-        Ingredient n = new Ingredient(name, type, seasonal, seasons);
-        ingredientRepository.save(n);
+        Ingredient ingredient = new Ingredient(name, type, seasonal, seasons);
+        ingredientRepository.save(ingredient);
         
         return new ResponseEntity<>("Ingredient created successfully", HttpStatus.CREATED);
     }
