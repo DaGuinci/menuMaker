@@ -73,6 +73,18 @@ class Ingreditent {
   - seasons: Int[]
 }
 
+class User {
+  - id: Long
+  - name: String
+  - email: String
+  - role: Collection<Role>
+}
+
+class Role {
+  - id: Long
+  - name: String
+}
+
 @enduml
 ```
 -->
