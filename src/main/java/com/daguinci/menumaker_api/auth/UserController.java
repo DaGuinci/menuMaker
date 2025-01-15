@@ -28,6 +28,16 @@ public class UserController {
         return userService.getUser(username);
     }
 
+    @PostMapping("/users/add")
+    public void addUser(@RequestBody AppUser appUser) {
+        userService.saveUser(appUser);
+    }
+
+    @PostMapping("/users/addRole")
+    public void addRoleToUser(String username, String roleName) {
+        userService.addRoleToUser(username, roleName);
+    }
+
     @GetMapping("/roles")
     public List<Role> getRoles() {
         return userService.getRoles();
