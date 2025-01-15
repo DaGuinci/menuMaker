@@ -44,3 +44,36 @@ seasons 7,3
 ```
 
 https://menumaker.readthedocs.io/fr/latest/setup.html
+
+## Class diagram
+<!-- 
+```plantuml
+@startuml
+skinparam backgroundColor #123749
+skinparam roundcorner 20
+skinparam classfontcolor lemon chiffon
+skinparam titlefontcolor linen
+skinparam arrowfontcolor linen
+skinparam attributefontcolor linen
+
+skinparam class {
+BackgroundColor #123749
+ArrowColor #EEB258
+BorderColor #EEB258
+AttributeFontColor linen
+}
+' skinparam handwritten true
+title Class diagram
+
+class Ingreditent {
+  - id: Int
+  - name: String
+  - type: String
+  - seasonal: Bool
+  - seasons: Int[]
+}
+
+@enduml
+```
+-->
+![Alt text](README.svg)

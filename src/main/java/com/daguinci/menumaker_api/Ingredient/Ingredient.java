@@ -1,12 +1,12 @@
-package com.daguinci.menumaker_api.model;
+package com.daguinci.menumaker_api.Ingredient;
+
+import com.daguinci.menumaker_api.converter.IntegerArrayConverter;
 
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import com.daguinci.menumaker_api.converter.IntegerArrayConverter;
 
 
 @Entity // This tells Hibernate to make a table out of this class
