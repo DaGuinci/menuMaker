@@ -1,12 +1,10 @@
 package com.daguinci.menumaker_api.auth;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
-    AppUser saveUser (AppUser appUser);
-    Role saveRole (Role role);
-    List<Role> getRoles();
-    void addRoleToUser(String username, String roleName);
-    AppUser getUser(String username);
-    List<AppUser> getUsers();
+    User saveUser (User user);
+    Optional<User> getUser(String username);
+    List<User> getUsers();
 }

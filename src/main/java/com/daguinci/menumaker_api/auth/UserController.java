@@ -1,6 +1,7 @@
 package com.daguinci.menumaker_api.auth;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/oldauth")
 public class UserController {
     private final UserService userService;
 
@@ -19,33 +20,17 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public List<AppUser> getUsers() {
+    public List<User> getUsers() {
         return userService.getUsers();
     }
 
     @GetMapping("/users/{username}")
-    public AppUser getUser(String username) {
+    public Optional<User> getUser(String username) {
         return userService.getUser(username);
     }
 
     @PostMapping("/users/add")
-    public void addUser(@RequestBody AppUser appUser) {
-        userService.saveUser(appUser);
+    public void addUser(@RequestBody User user) {
+        userService.saveUser(user);
     }
-
-    @PostMapping("/users/addRole")
-    public void addRoleToUser(String username, String roleName) {
-        userService.addRoleToUser(username, roleName);
-    }
-
-    @GetMapping("/roles")
-    public List<Role> getRoles() {
-        return userService.getRoles();
-    }
-
-    @PostMapping("/roles/add")
-    public void addRole(@RequestBody Role role) {
-        userService.saveRole(role);
-    }
-
 }
