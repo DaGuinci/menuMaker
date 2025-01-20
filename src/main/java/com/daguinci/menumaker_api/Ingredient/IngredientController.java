@@ -24,7 +24,7 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
-    @GetMapping
+    @GetMapping(path="/all")
     public List<Ingredient> getAllIngredients() {
         return ingredientService.getAllIngredients();
     }
