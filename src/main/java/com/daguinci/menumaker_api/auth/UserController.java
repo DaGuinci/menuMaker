@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/oldauth")
+@RequestMapping("/auth")
 public class UserController {
     private final UserService userService;
 
@@ -31,6 +31,9 @@ public class UserController {
 
     @PostMapping("/users/add")
     public void addUser(@RequestBody User user) {
+        if (user.getRole() == null) {
+            user.setRole(Role.USER);
+        }
         userService.saveUser(user);
     }
 }

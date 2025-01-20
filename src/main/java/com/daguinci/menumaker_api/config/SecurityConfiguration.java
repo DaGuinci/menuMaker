@@ -20,9 +20,10 @@ public class SecurityConfiguration {
         this.authenticationProvider = authenticationProvider;
     }
     private static final String[] WHITE_LIST_URL = {"/ingredients/all",
-            "/swagger-ui/**",
-            "/webjars/**",
-            "/swagger-ui.html"};
+        "/auth/users/add",
+        "/swagger-ui/**",
+        "/webjars/**",
+        "/swagger-ui.html"};
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

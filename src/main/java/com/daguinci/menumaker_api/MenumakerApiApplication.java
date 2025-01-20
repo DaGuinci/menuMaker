@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import com.daguinci.menumaker_api.auth.Role;
+import com.daguinci.menumaker_api.auth.User;
 import com.daguinci.menumaker_api.auth.UserService;
 
 @SpringBootApplication
@@ -26,7 +28,7 @@ public class MenumakerApiApplication {
 			// userService.saveRole(new Role("ROLE_ADMIN"));
 			// userService.saveRole(new Role("ROLE_SUPER_ADMIN"));
 
-			// userService.saveUser(new User("John Doe", "john", "1234", Role.USER));
+			userService.saveUser(new User("John Doe", "john", "1234", Role.USER));
 			// userService.saveUser(new User("Jane Doe", "jane", "1234", Role.CONTRIBUTOR));
 			// userService.saveUser(new User("Tom Smith", "tom", "1234", Role.ADMIN));
 			// userService.saveUser(new User("Jerry Smith", "jerry", "1234", Role.SUPER_ADMIN));
